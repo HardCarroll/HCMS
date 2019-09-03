@@ -1,0 +1,18 @@
+#siteTab>.site-wrap>.input-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+#siteTab>.site-wrap>.input-group>label {
+  width: 100px;
+  padding: 6px;
+}
+#siteTab>.site-wrap>.input-group:last-child {
+  text-align: right;
+}
+#siteTab>.site-wrap>.input-group>span.btn {
+  width: 120px;
+}
+.text-state {
+  text-align: center;
+  cursor: default;
+}

@@ -1,0 +1,219 @@
+@font-face {
+  font-family: 'icocuz';
+  src:  url('/cms/include/fonts/icocuz.eot?2r9drd');
+  src:  url('/cms/include/fonts/icocuz.eot?2r9drd#iefix') format('embedded-opentype'),
+    url('/cms/include/fonts/icocuz.ttf?2r9drd') format('truetype'),
+    url('/cms/include/fonts/icocuz.woff?2r9drd') format('woff'),
+    url('/cms/include/fonts/icocuz.svg?2r9drd#icocuz') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'icoserv';
+  src:  url('/cms/include/fonts/icoserv.eot?ega587');
+  src:  url('/cms/include/fonts/icoserv.eot?ega587#iefix') format('embedded-opentype'),
+    url('/cms/include/fonts/icoserv.ttf?ega587') format('truetype'),
+    url('/cms/include/fonts/icoserv.woff?ega587') format('woff'),
+    url('/cms/include/fonts/icoserv.svg?ega587#icoserv') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'lcd';
+  src:  url('/cms/include/fonts/lcd.eot');
+  src:  url('/cms/include/fonts/lcd.eot') format('embedded-opentype'),
+    url('/cms/include/fonts/lcd.ttf') format('truetype'),
+    url('/cms/include/fonts/lcd.woff') format('woff'),
+    url('/cms/include/fonts/lcd.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.lcd {
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'lcd' !important;
+}
+.icon {
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+.icon-cuz {
+  font-family: 'icocuz' !important;
+}
+.icon-serv {
+  font-family: 'icoserv' !important;
+}
+.icon-presentation:before {
+  content: "\e00e";
+}
+.icon-lightbulb:before {
+  content: "\e030";
+}
+.icon-tools:before {
+  content: "\e033";
+}
+.icon-paintbrush:before {
+  content: "\e036";
+}
+.icon-circle-compass:before {
+  content: "\e038";
+}
+.icon-linegraph:before {
+  content: "\e039";
+}
+.icon-piechart:before {
+  content: "\e050";
+}
+.icon-global:before {
+  content: "\e052";
+}
+.icon-heart:before {
+  content: "\f004";
+}
+.icon-star:before {
+  content: "\f005";
+}
+.icon-star-o:before {
+  content: "\f006";
+}
+.icon-user:before {
+  content: "\f007";
+}
+.icon-gear:before {
+  content: "\f013";
+}
+.icon-trash-o:before {
+  content: "\f014";
+}
+.icon-home:before {
+  content: "\f015";
+}
+.icon-download:before {
+  content: "\f019";
+}
+.icon-lock:before {
+  content: "\f023";
+}
+.icon-qrcode:before {
+  content: "\f029";
+}
+.icon-edit:before {
+  content: "\f044";
+}
+.icon-check-square-o:before {
+  content: "\f046";
+}
+.icon-exclamation-circle:before {
+  content: "\f06a";
+}
+.icon-eye:before {
+  content: "\f06e";
+}
+.icon-eye-slash:before {
+  content: "\f070";
+}
+.icon-key:before {
+  content: "\f084";
+}
+.icon-heart-o:before {
+  content: "\f08a";
+}
+.icon-sign-out:before {
+  content: "\f08b";
+}
+.icon-sign-in:before {
+  content: "\f090";
+}
+.icon-upload:before {
+  content: "\f093";
+}
+.icon-phone:before {
+  content: "\f095";
+}
+.icon-link:before {
+  content: "\f0c1";
+}
+.icon-cloud:before {
+  content: "\f0c2";
+}
+.icon-envelope:before {
+  content: "\f0e0";
+}
+.icon-sitemap:before {
+  content: "\f0e8";
+}
+.icon-cloud-download:before {
+  content: "\f0ed";
+}
+.icon-cloud-upload:before {
+  content: "\f0ee";
+}
+.icon-spinner:before {
+  content: "\f110";
+}
+.icon-star-half-empty:before {
+  content: "\f123";
+}
+.icon-chain-broken:before {
+  content: "\f127";
+}
+.icon-unlink:before {
+  content: "\f127";
+}
+.icon-unlock:before {
+  content: "\f13e";
+}
+.icon-thumbs-up:before {
+  content: "\f164";
+}
+.icon-thumbs-down:before {
+  content: "\f165";
+}
+.icon-apple:before {
+  content: "\f179";
+}
+.icon-windows:before {
+  content: "\f17a";
+}
+.icon-android:before {
+  content: "\f17b";
+}
+.icon-linux:before {
+  content: "\f17c";
+}
+.icon-bug:before {
+  content: "\f188";
+}
+.icon-fax:before {
+  content: "\f1ac";
+}
+.icon-database:before {
+  content: "\f1c0";
+}
+.icon-qq:before {
+  content: "\f1d6";
+}
+.icon-wechat:before {
+  content: "\f1d7";
+}
+.icon-newspaper-o:before {
+  content: "\f1ea";
+}
+.icon-address-book:before {
+  content: "\f2b9";
+}
+.icon-id-badge:before {
+  content: "\f2c1";
+}
+.icon-id-card-o:before {
+  content: "\f2c3";
+}

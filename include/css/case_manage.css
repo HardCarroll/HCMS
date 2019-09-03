@@ -1,0 +1,132 @@
+#caseTab>.overview>div {
+  padding: 0 5px;
+}
+#caseTab>.overview .wrap {
+  height: 69px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #e6e8e8;
+  text-align: right;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+#caseTab>.overview .btn-upload {
+  height: 69px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  line-height: 57px;
+  text-align: center;
+  font-size: 18px;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  color: #fff;
+}
+#caseTab>.overview .wrap>p {
+  text-align: left;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #666;
+}
+#caseTab>.overview .wrap>.digital {
+  padding: 0 5px;
+  font-size: 26px;
+}
+#caseTab>.case-wrap {
+  height: 535px;
+}
+#caseTab>.case-wrap>.panel-group {
+  margin-bottom: 0;
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-heading {
+  padding: 0;
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-heading>a {
+  width: 100%;
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  color: #565858;
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-heading>a:hover, #caseTab>.case-wrap>.panel-group>.panel>.panel-heading>a:active {
+  color: #262828
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-collapse {
+  border-top: 1px solid transparent;
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-collapse.in {
+  border-top: 1px solid #ddd;
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-collapse>.btn-group {
+  padding: 15px;
+}
+#caseTab>.case-wrap>.panel-group>.panel>.panel-collapse>.btn-group>.btn {
+  margin-bottom: 5px;
+  border-radius: 0;
+}
+#caseTab>.list-wrap {
+  text-align: center;
+  cursor: default;
+}
+#caseTab>.list-wrap>.pagination {
+  cursor: pointer;
+}
+
+/* #uploadTab, #caseTab CSS */
+.case-page>.input-group {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.case-page>.input-group:last-child {
+  text-align: right;
+}
+.case-page>.input-group:last-child>span {
+  margin-left: 15px;
+}
+.case-page>.input-group>label {
+  width: 100px;
+  padding: 6px;
+}
+.case-page>.input-group>.case-thumb {
+  float: none;
+  padding: 0;
+  position: relative;
+}
+.case-page>.input-group>.case-thumb>div {
+  padding: 5px;
+  position: relative;
+}
+.case-page>.input-group>.case-thumb>div>.btn-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #f00;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  opacity: 0;
+}
+.case-page>.input-group>.case-thumb>div:hover>.btn-remove {
+  opacity: 1;
+}
+.case-page>.input-group>.case-thumb>div>.thumbnail {
+  margin-bottom: 0;
+}
+.case-page>.input-group>.case-thumb>div>.thumbnail>.caption {
+  background-color: #e6e8e8;
+}
+.case-page>.input-group>.case-thumb>div>.thumbnail>.caption>input {
+  width: 100%;
+  padding: 0 5px;
+}
+.case-page>.input-group>.case-thumb>div>.thumbnail>.caption>input+input {
+  margin-top: 5px;
+}
+.case-page>.input-group>.case-thumb>div:last-child {
+  text-align: center;
+}
+.case-page>.input-group>.case-thumb>div>div.btn {
+  margin: 20px;
+}
