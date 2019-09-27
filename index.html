@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" onselectstart="return false;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HCMS DOCUMENT</title>
+  <link rel="stylesheet" href="/include/bootstrap/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/plugin/fileTree/fileTree.css"> -->
+</head>
+<body>
+  <input type="button" value="BTN_TEST" id="btn">
+  <input type="file" name="BTN_FILE" id="file">
+
+  <!-- <div id="fileTree">
+    <div class="content">
+      <div class="content-head">
+        <span class='title'>File Tree Dialog</span>
+        <span class='close glyphicon glyphicon-remove'></span>
+      </div>
+      <div class="content-body">
+        <div class="file-list"></div>
+        <div class="file-thumb"></div>
+      </div>
+      <div class="content-foot"></div>
+    </div>
+  </div> -->
+
+  <script src="/include/jquery/jquery.min.js"></script>
+  <script src="/include/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/plugin/fileTree/fileTree.js"></script>
+  <script>
+    $("#btn").click(function() {
+      // $(this).fileTree();
+      $(this).fileTree({scanPath: "/", loadFile: ["/include/js/index.js", "/plugin/fileTree/fileTree.css"]});
+    });
+  </script>
+</body>
+</html>

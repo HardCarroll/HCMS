@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/cms/include/php/include.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/include/php/include.php");
 
 if (isset($_POST["token"]) && !empty($_POST["token"])) {
   switch ($_POST["token"]) {
@@ -99,8 +99,8 @@ if (isset($_POST["token"]) && !empty($_POST["token"])) {
         echo $articleManage->getRecordCounts($_POST["rule"]);
       }
       break;
-    case "debug":
-      echo pro_debug($_POST["data"]);
+    case "fileTree":
+      echo proc_fileTree($_SERVER["DOCUMENT_ROOT"] . $_POST["filePath"]);
       break;
     default:
       break;
@@ -410,6 +410,43 @@ function pro_debug($data) {
     file_put_contents($path."/106.json", $data);
   }
   return json_encode('{"err_code": "test"}');
+}
+
+function proc_fileTree($filePath) {
+  $retArray = array("err_no" => "", "err_code" => "");
+  if(file_exists(iconv('UTF-8', 'GB2312', $filePath))) {
+    // 给定路径的文件或目录存在
+    $retArray["err_no"] = 0;
+    $retArray["err_code"] = fileTree($filePath);
+  }
+  else {
+    // 给定路径的文件或目录不存在
+    $retArray["err_no"] = -1;
+    $retArray["err_code"] = $filePath . "不存在，请检查有效性！";
+  }
+  return json_encode($retArray, 320);
+}
+
+function fileTree($filePath) {
+  // 1, 格式化返回数组
+  $path = str_replace($_SERVER["DOCUMENT_ROOT"], "", $filePath);
+  $path = str_replace("//", "/", $path);
+  $resultArray = array("name" => basename($path), "path" => $path, "sub_file" => "");
+
+  // 2, 当路径是文件夹则递归调用
+  if (is_dir($filePath)) {
+    $scanArray = scandir($filePath);
+    $subArray = array();
+    foreach ($scanArray as $file) {
+      if ("." !== $file && ".." !== $file) {
+        array_push($subArray, fileTree($filePath . "/" . $file));
+      }
+    }
+    $resultArray["sub_file"] = $subArray;
+  }
+
+  // 3, 返回结果
+  return $resultArray;
 }
 
 /**
