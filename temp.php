@@ -242,7 +242,8 @@
   <?php
 
   // echo json_encode(fileTree(__DIR__), 320);
-  // echo "<br>".__DIR__."<br>";
+  echo "<br>".__FILE__."<br>";
+  echo "<br>".basename(__FILE__)."<br>";
   ?>
 
   <!-- <div id='fileTree'>

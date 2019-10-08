@@ -6,11 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>HCMS DOCUMENT</title>
   <link rel="stylesheet" href="/include/bootstrap/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="/plugin/fileTree/fileTree.css"> -->
+  <link rel="stylesheet" href="/plugin/fileTree/fileTree.css">
 </head>
 <body>
   <input type="button" value="BTN_TEST" id="btn">
   <input type="file" name="BTN_FILE" id="file">
+  <input type="button" value="BTN_DEBUG" id="debug">
+
+  <div>
+    <!-- <img src="" alt="" id="viewImg"> -->
+    <input type="file" id="view" multiple>
+  </div>
 
   <!-- <div id="fileTree">
     <div class="content">
@@ -18,9 +24,45 @@
         <span class='title'>File Tree Dialog</span>
         <span class='close glyphicon glyphicon-remove'></span>
       </div>
+      <div class="content-address">
+        <div class="input-group">
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+          </div>
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-arrow-right"></span>
+          </div>
+          <div class="form-control">
+            <span>file1</span>
+            <span>file2</span>
+            <span>file3</span>
+            <span>file4</span>
+            <span>file5</span>
+            <span>file6</span>
+          </div>
+        </div>
+      </div>
       <div class="content-body">
         <div class="file-list"></div>
-        <div class="file-thumb"></div>
+        <div class='v-seperator'></div>
+        <div class="file-thumb">
+          <div class="thumb-item col-xs-3">
+            <span class="glyphicon glyphicon-folder-close"></span>
+            <div class="thumb-name">admin</div>
+          </div>
+          <div class="thumb-item col-xs-3">
+            <span class="glyphicon glyphicon-folder-close"></span>
+            <div class="thumb-name">include</div>
+          </div>
+          <div class="thumb-item col-xs-3">
+            <span class="glyphicon glyphicon-folder-close"></span>
+            <div class="thumb-name">admin</div>
+          </div>
+          <div class="thumb-item col-xs-3">
+            <span class="glyphicon glyphicon-folder-close"></span>
+            <div class="thumb-name">include</div>
+          </div>
+        </div>
       </div>
       <div class="content-foot"></div>
     </div>
@@ -30,9 +72,37 @@
   <script src="/include/bootstrap/js/bootstrap.min.js"></script>
   <script src="/plugin/fileTree/fileTree.js"></script>
   <script>
+    $("#view").on("change", function() {
+      // console.log(window.webkitURL.createObjectURL($(this)[0].files[0]));
+      // $("#viewImg").attr("src", window.webkitURL.createObjectURL($(this)[0].files[0]));
+      var files = $(this)[0].files;
+      console.log(files);
+      for(var i=0; i<files.length; i++) {
+        // console.log(window.webkitURL.createObjectURL(files[i]));
+        var url = window.webkitURL.createObjectURL(files[i]);
+        console.log(url);
+        $(this).parent().append("<img src='"+url+"'>");
+      }
+    });
+
     $("#btn").click(function() {
       // $(this).fileTree();
-      $(this).fileTree({scanPath: "/", loadFile: ["/include/js/index.js", "/plugin/fileTree/fileTree.css"]});
+      // $(this).fileTree({scanPath: "/../../../home"});
+      $(this).fileTree({scanPath: "/"});
+    });
+    $("#debug").click(function() {
+      $.ajax({
+        url: "/test.php",
+        type: "POST",
+        data: "token=/../../../home",
+        // contentType: false,
+        dataType: "json",
+        processData: false,
+        success: function(result) {
+          console.log(result);
+        },
+        error: function(err) {}
+      });
     });
   </script>
 </body>

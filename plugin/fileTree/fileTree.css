@@ -67,6 +67,20 @@
   flex: 2;
   height: 100%;
   overflow: auto;
+  text-align: center;
+}
+.thumb-item {
+  padding: 5px;
+  cursor: pointer;
+}
+.thumb-item span.glyphicon{
+  font-size: 30px;
+}
+.thumb-item .thumb-name {
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 #fileTree .content .content-foot {
   height: 40px;
@@ -140,6 +154,15 @@
 .item-head>.glyphicon-folder::before {
   content: "\e117";
 }
+.item-head>.glyphicon-menu {
+  float: right;
+}
+.item-head>.glyphicon-menu:hover {
+  color: #F60;
+}
+.item-head>.glyphicon-menu::before {
+  content: "\e258";
+}
 .item-body {
   display: none;
   opacity: 0;
@@ -153,6 +176,9 @@
 }
 .tree-item.on>.item-head>.glyphicon-folder::before {
   content: "\e118";
+}
+.tree-item.on>.item-head>.glyphicon-menu::before {
+  content: "\e259";
 }
 .tree-item.on>.item-body {
   display: block;

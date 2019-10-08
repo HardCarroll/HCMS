@@ -31,6 +31,8 @@ function fileTree($filePath) {
     $resultArray["name"] = $_SERVER["HTTP_HOST"];
   }
 
+  $filePath = $_SERVER["DOCUMENT_ROOT"] . $path;
+
   // 2, 当路径是文件夹则递归调用
   if (is_dir($filePath)) {
     $resultArray["type"] = "folder";
@@ -56,6 +58,8 @@ function fileTree($filePath) {
 
 function formatPath($path) {
   $path = str_replace($_SERVER["DOCUMENT_ROOT"], "/", $path);
+  $path = str_replace("../", "", $path);
+  $path = str_replace("./", "", $path);
   $path = str_replace("///", "/", $path);
   $path = str_replace("//", "/", $path);
   return $path;
