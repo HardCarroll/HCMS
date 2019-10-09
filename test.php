@@ -1,6 +1,6 @@
 <?php
-$val = '{"err_no": 0, "err_code": "hello world", "token": "'.$_POST["token"].'"}';
-$val = str_replace("../", "", $val);
-$val = str_replace("./", "", $val);
-echo $val;
-// echo json_encode($val, 320);
+$f = $_FILES["files"];
+foreach($f["tmp_name"] as $key=>$val) {
+  move_uploaded_file($val, $_SERVER["DOCUMENT_ROOT"]."/upload/".$f["name"][$key]);
+}
+// echo json_encode($res, 320);

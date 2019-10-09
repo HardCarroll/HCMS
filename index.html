@@ -10,13 +10,9 @@
 </head>
 <body>
   <input type="button" value="BTN_TEST" id="btn">
-  <input type="file" name="BTN_FILE" id="file">
+  <input type="file" name="BTN_FILE" id="file" multiple>
   <input type="button" value="BTN_DEBUG" id="debug">
-
-  <div>
-    <!-- <img src="" alt="" id="viewImg"> -->
-    <input type="file" id="view" multiple>
-  </div>
+  <div class="imgs"></div>
 
   <!-- <div id="fileTree">
     <div class="content">
@@ -72,30 +68,37 @@
   <script src="/include/bootstrap/js/bootstrap.min.js"></script>
   <script src="/plugin/fileTree/fileTree.js"></script>
   <script>
-    $("#view").on("change", function() {
-      // console.log(window.webkitURL.createObjectURL($(this)[0].files[0]));
-      // $("#viewImg").attr("src", window.webkitURL.createObjectURL($(this)[0].files[0]));
-      var files = $(this)[0].files;
-      console.log(files);
-      for(var i=0; i<files.length; i++) {
-        // console.log(window.webkitURL.createObjectURL(files[i]));
-        var url = window.webkitURL.createObjectURL(files[i]);
-        console.log(url);
-        $(this).parent().append("<img src='"+url+"'>");
-      }
-    });
-
     $("#btn").click(function() {
       // $(this).fileTree();
       // $(this).fileTree({scanPath: "/../../../home"});
       $(this).fileTree({scanPath: "/"});
     });
+
+    $("#file").on("change", function() {
+      $("div.imgs").empty();
+      var files = $(this)[0].files;
+      for (var i = 0; i < files.length; i++) {
+        $("<img src='" + window.URL.createObjectURL(files[i]) + "'>").off("click").on("click", function() {
+          $(this).addClass("hidden");
+        }).appendTo("div.imgs");
+      }
+    });
+
     $("#debug").click(function() {
+      var fmd = new FormData();
+      var files = $("#file")[0].files;
+      for(var i=0; i<files.length; i++) {
+        fmd.append("files["+i+"]", files[i]);
+      }
+      $("div.imgs img[class='hidden']").each(function() {
+        fmd.delete("files["+$(this).index()+"]");
+      });
+
       $.ajax({
         url: "/test.php",
         type: "POST",
-        data: "token=/../../../home",
-        // contentType: false,
+        data: fmd,
+        contentType: false,
         dataType: "json",
         processData: false,
         success: function(result) {

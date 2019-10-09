@@ -88,7 +88,7 @@
         else {
           // 判断是否有#fileTree元素节点, 没有则先添加#fileTree节点
           if (!$("body").find("#fileTree").length) {
-            var dlg = $("<div id='fileTree'><div class='content'><div class='content-head'><span class='title'>File Tree Dialog</span><span class='close glyphicon glyphicon-remove'></span></div><div class='content-body'><div class='file-list'></div><div class='v-seperator'></div><div class='file-thumb'></div></div><div class='content-foot'><label>当前位置：</label><div class='pathRoute'></div></div></div></div>");
+            var dlg = $("<div id='fileTree'><div class='content'><div class='content-head'><span class='title'>File Tree Dialog</span><span class='close glyphicon glyphicon-remove'></span></div><div class='content-address'><label>当前位置：</label><div class='pathRoute'></div></div><div class='content-body'><div class='file-list'></div><div class='v-seperator'></div><div class='file-thumb'></div></div><div class='content-foot'></div></div></div>");
 
             // 对话框关闭按钮
             dlg.appendTo("body").find(".glyphicon-remove").off("click").on("click", function () {
@@ -122,21 +122,27 @@
           $("#fileTree").find(".item-head").off("click").on("click", function (e) {
             e.stopPropagation();
             e.preventDefault();
-            // if ($(this).next().length) {
             if ($(this).attr("data-type") === "folder") {
-              // $(this).parent().toggleClass("on");
-              $(".pathRoute").empty();
-              var pathArray = $(this).attr("data-path").split("/");
-              for (var i in pathArray) {
-                if (pathArray[i]) {
-                  $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
-                }
-              }
+              // $(".pathRoute").empty();
+              // var pathArray = $(this).attr("data-path").split("/");
+              // for (var i in pathArray) {
+              //   if (pathArray[i]) {
+              //     $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
+              //   }
+              // }
 
               createDomThumb($(this).attr("data-path"));
             }
             else {
-              console.log($(this).attr("data-type"));
+              console.log($(this).attr("title"));
+            }
+            
+            $(".pathRoute").empty();
+            var pathArray = $(this).attr("data-path").split("/");
+            for (var i in pathArray) {
+              if (pathArray[i]) {
+                $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
+              }
             }
           });
 
@@ -218,16 +224,24 @@
           createDomThumb($(this).attr("data-path"));
           $("#fileTree .pathRoute").empty().append();
 
-          $(".pathRoute").empty();
-          var pathArray = $(this).attr("data-path").split("/");
-          for (var i in pathArray) {
-            if (pathArray[i]) {
-              $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
-            }
-          }
+          // $(".pathRoute").empty();
+          // var pathArray = $(this).attr("data-path").split("/");
+          // for (var i in pathArray) {
+          //   if (pathArray[i]) {
+          //     $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
+          //   }
+          // }
         }
         else {
           console.log($(this).attr("title"));
+        }
+
+        $(".pathRoute").empty();
+        var pathArray = $(this).attr("data-path").split("/");
+        for (var i in pathArray) {
+          if (pathArray[i]) {
+            $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
+          }
         }
       });
     });
