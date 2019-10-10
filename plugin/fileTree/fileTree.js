@@ -21,12 +21,8 @@
         }
       });
     },
-    debug: function(options) {
-      var opt = $.extend({}, defaults, options);
-      return $(this).each(function() {
-        console.log("call in plugin");
-        logout(opt);
-      });
+    debug: function(fn) {
+      fn();
     }
   });
 
@@ -44,6 +40,11 @@
       return false;
     }
   }
+
+  // 公有方法，允许用户自定义修改
+  $.fn.fileTree.onConfirm = function(path) {
+    console.log(path);
+  };
 
   // 生成DOM树结构
   function createDomTree(data, parentNode = $("#fileTree .file-list")) {
@@ -88,15 +89,16 @@
         else {
           // 判断是否有#fileTree元素节点, 没有则先添加#fileTree节点
           if (!$("body").find("#fileTree").length) {
-            var dlg = $("<div id='fileTree'><div class='content'><div class='content-head'><span class='title'>File Tree Dialog</span><span class='close glyphicon glyphicon-remove'></span></div><div class='content-address'><label>当前位置：</label><div class='pathRoute'></div></div><div class='content-body'><div class='file-list'></div><div class='v-seperator'></div><div class='file-thumb'></div></div><div class='content-foot'></div></div></div>");
+            var dlg = $("<div id='fileTree'><div class='content'><div class='content-head'><span class='title'>File Tree Dialog</span><span class='close glyphicon glyphicon-remove'></span></div><div class='content-address'><div class='input-group'><span class='input-group-addon'>当前位置：</span><div class='form-control pathRoute'></div></div></div><div class='content-body'><div class='file-list'></div><div class='v-seperator'></div><div class='file-thumb'></div></div><div class='content-foot'><div class='input-group'><span class='input-group-addon'>文件名：</span><input type='text' class='form-control' name='filename'><span class='input-group-addon btn' role='confirm'>选择</span></div></div></div></div>");
 
             // 对话框关闭按钮
             dlg.appendTo("body").find(".glyphicon-remove").off("click").on("click", function () {
-              $("#fileTree").remove();
+              // $("#fileTree").remove();
+              close();
             });
 
-            dlg.find("#refresh").off("click").on("click", function() {
-              console.log("refreshTree()");
+            $("#fileTree").find("[role='confirm']").off("click").on("click", function() {
+              $.fileTree.debug();
             });
 
             var routeArray = opt.scanPath.split("/");
@@ -123,30 +125,22 @@
             e.stopPropagation();
             e.preventDefault();
             if ($(this).attr("data-type") === "folder") {
-              // $(".pathRoute").empty();
-              // var pathArray = $(this).attr("data-path").split("/");
-              // for (var i in pathArray) {
-              //   if (pathArray[i]) {
-              //     $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
-              //   }
-              // }
-
+              $(".pathRoute").empty();
+              var pathArray = $(this).attr("data-path").split("/");
+              for (var i in pathArray) {
+                if (pathArray[i]) {
+                  $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
+                }
+              }
               createDomThumb($(this).attr("data-path"));
             }
             else {
-              console.log($(this).attr("title"));
-            }
-            
-            $(".pathRoute").empty();
-            var pathArray = $(this).attr("data-path").split("/");
-            for (var i in pathArray) {
-              if (pathArray[i]) {
-                $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
-              }
+              // console.log($(this).attr("title"));
+              $("#fileTree").find("[name='filename']").val($(this).attr("title")).attr("data-path", $(this).attr("data-path"));
             }
           });
 
-          // 右侧小箭头点击事件
+          // 右侧小箭头点击展开
           $("#fileTree").find(".glyphicon-menu").off("click").on("click", function(e) {
             e.stopPropagation();
             e.preventDefault();
@@ -196,11 +190,6 @@
     $("#fileTree").find(".file-thumb").empty();
 
     $("#fileTree .file-list").find("[data-path='"+path+"']").next().children().each(function() {
-      // $("<div></div>").attr({
-      //   "class": "thumb-item col-xs-3",
-      //   "data-path": $(this).children("[class='item-head']").attr("data-path"),
-      //   "title": $(this).children("[class='item-head']").attr("title")
-      // }).append("<span class='glyphicon'></span>").append("<div class='thumb-name'>"+$(this).children("[class='item-head']").attr("title")+"</div>").appendTo("#fileTree .file-thumb");
       var ele = $("<div></div>").attr({
         "class": "thumb-item col-xs-3",
         "data-path": $(this).children("[class='item-head']").attr("data-path"),
@@ -224,27 +213,24 @@
           createDomThumb($(this).attr("data-path"));
           $("#fileTree .pathRoute").empty().append();
 
-          // $(".pathRoute").empty();
-          // var pathArray = $(this).attr("data-path").split("/");
-          // for (var i in pathArray) {
-          //   if (pathArray[i]) {
-          //     $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
-          //   }
-          // }
+          $(".pathRoute").empty();
+          var pathArray = $(this).attr("data-path").split("/");
+          for (var i in pathArray) {
+            if (pathArray[i]) {
+              $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
+            }
+          }
         }
         else {
-          console.log($(this).attr("title"));
-        }
-
-        $(".pathRoute").empty();
-        var pathArray = $(this).attr("data-path").split("/");
-        for (var i in pathArray) {
-          if (pathArray[i]) {
-            $(".pathRoute").append("<span>" + pathArray[i] + "</span>");
-          }
+          // console.log($(this).attr("title"));
+          $("#fileTree").find("[name='filename']").val($(this).attr("title")).attr("data-path", $(this).attr("data-path"));
         }
       });
     });
+  }
+
+  function close() {
+    $("#fileTree").remove();
   }
 
   function logout(params) {

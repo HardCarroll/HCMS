@@ -23,6 +23,12 @@
   display: flex;
   flex-direction: column;
 }
+#fileTree .content .form-control {
+  border-radius: 0;
+}
+#fileTree .content .input-group-addon {
+  border-radius: 0;
+}
 #fileTree .content .content-head {
   height: 40px;
   line-height: 40px;
@@ -40,8 +46,6 @@
   cursor: pointer;
 }
 #fileTree .content .content-body {
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
   flex: 1;
   display: flex;
 }
@@ -56,12 +60,12 @@
 .h-seperator {
   height: 1px;
   width: 100%;
-  background-color: #666;
+  background-color: #ccc;
 }
 .v-seperator {
   width: 1px;
   height: 100%;
-  background-color: #666;
+  background-color: #ccc;
 }
 #fileTree .content .content-body .file-thumb {
   flex: 2;
@@ -82,14 +86,6 @@
   overflow: hidden;
   white-space: nowrap;
 }
-#fileTree .content .content-foot {
-  height: 40px;
-  padding: 0 10px;
-}
-#fileTree .content .content-address {
-  height: 40px;
-  padding: 0 10px;
-}
 #fileTree .content .content-address label {
   vertical-align: top;
   height: 100%;
@@ -99,9 +95,7 @@
 .pathRoute {
   display: inline-block;
   padding-left: 10px;
-  height: 40px;
-  line-height: 40px;
-  font-weight: 700;
+  /* font-weight: 700; */
   position: relative;
 }
 .pathRoute::before {
@@ -110,8 +104,8 @@
   height: 100%;
   text-align: center;
   position: absolute;
-  top: 0;
-  left: 0px;
+  top: 6px;
+  left: 3px;
 }
 .pathRoute span {
   display: inline-block;

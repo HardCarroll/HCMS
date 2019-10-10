@@ -60,7 +60,14 @@
           </div>
         </div>
       </div>
-      <div class="content-foot"></div>
+      <div class="content-foot">
+        <div class="input-group">
+          <span class="input-group-addon">文件名：</span>
+          <input type="text" class="form-control">
+          <span class="input-group-addon">选择</span>
+          <span class="input-group-addon">取消</span>
+        </div>
+      </div>
     </div>
   </div> -->
 
@@ -71,7 +78,9 @@
     $("#btn").click(function() {
       // $(this).fileTree();
       // $(this).fileTree({scanPath: "/../../../home"});
-      $(this).fileTree({scanPath: "/"});
+      $(this).fileTree({scanPath: "/"}).debug(function() {
+        console.log('hello, ');
+      });
     });
 
     $("#file").on("change", function() {
