@@ -1,21 +1,17 @@
 <div class="input-group">
-  <span class="input-group-addon">数据库账号</span>
-  <input id="inDBAccount" type="text" class="form-control">
+  <span class="input-group-addon">数据库账号<b>*</b></span>
+  <input id="inDBAccount" type="text" class="form-control" placeholder="请向空间服务商索取">
 </div>
 <div class="input-group">
-  <span class="input-group-addon">数据库密码</span>
-  <input id="inDBPassword" type="text" class="form-control">
+  <span class="input-group-addon">数据库密码<b>*</b></span>
+  <input id="inDBPassword" type="password" class="form-control" placeholder="请向空间服务商索取">
 </div>
 <div class="input-group">
-  <span class="input-group-addon">数据库地址</span>
-  <input id="inDBServer" type="text" class="form-control" value="localhost">
+  <span class="input-group-addon">数据库地址<b>*</b></span>
+  <input id="inDBHost" type="text" class="form-control" value="localhost" placeholder="请向空间服务商索取">
 </div>
 <div class="input-group">
-  <span class="input-group-addon">数据库名称</span>
+  <span class="input-group-addon">数据库名称<b>*</b></span>
   <input id="inDBName" type="text" class="form-control">
-</div>
-<div class="input-group">
-  <span class="input-group-addon">数据表前缀</span>
-  <input id="inDBPrefix" type="text" class="form-control">
 </div>
 <div class="return-msg"></div>

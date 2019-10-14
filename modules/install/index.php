@@ -1,5 +1,6 @@
 <?php
 session_start();
+$step = $_SESSION["step"];
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -18,40 +19,20 @@ session_start();
     <div class="install-head"></div>
     <div class="install-body">
       <div class="step-list">
-        <span class="step-item done">Step_1</span>
-        <span class="step-item">Step_2</span>
-        <span class="step-item">Step_3</span>
-        <span class="step-item">Step_4</span>
+        <span class="step-item done">第一步</span>
+        <span class="step-item">第二步</span>
+        <span class="step-item">第三步</span>
+        <span class="step-item">第四步</span>
       </div>
       <div class="step-content">
-        <!-- <?php echo file_get_contents("./step1"); ?> -->
-        <div class="input-group">
-          <span class="input-group-addon">数据库账号</span>
-          <input id="inDBAccount" type="text" class="form-control">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">数据库密码</span>
-          <input id="inDBPassword" type="text" class="form-control">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">数据库地址</span>
-          <input id="inDBServer" type="text" class="form-control" value="localhost">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">数据库名称</span>
-          <input id="inDBName" type="text" class="form-control">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">数据表前缀</span>
-          <input id="inDBPrefix" type="text" class="form-control">
-        </div>
-        <div class="return-msg"></div>
+        <?php echo file_get_contents("./step1"); ?>
       </div>
     </div>
     <div class="install-foot">
-      <span class="btn btn-default btn-prev hidden">Prev</span>
-      <span class="btn btn-default btn-next">Next</span>
-      <span class="btn btn-default btn-done hidden">Done</span>
+      <span class="btn btn-primary btn-prev hidden">上一步</span>
+      <span class="btn btn-primary btn-next">下一步</span>
+      <span class="btn btn-success btn-done hidden">完成</span>
+      <span class="btn btn-default btn-debug">Debug</span>
     </div>
   </div>
 </body>
@@ -59,5 +40,10 @@ session_start();
 <script src="/include/jquery/jquery.min.js"></script>
 <script src="/include/bootstrap/js/bootstrap.min.js"></script>
 <script src="./install.js"></script>
+<script>
+  // $(".btn-debug").click(function() {
+  //   $(this).install({step: 2}).debug();
+  // });
+</script>
 
 </html>

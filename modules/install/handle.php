@@ -11,18 +11,49 @@ if(!isset($_SESSION["count_steps"]) || empty($_SESSION["count_steps"])) {
   $_SESSION["count_steps"] = 5;
 }
 
-if(isset($token) && !empty($token)) {
-  if("prev" === $token && $step > 1) {
-    $_SESSION["step"] = $step -= 1;
-  }
-  else if("next" === $token && $step < $_SESSION["count_steps"]-1) {
-    $_SESSION["step"] = $step += 1;
-  }
+switch($step) {
+  case 1:
+    $ret["data"] = "saveStep(1)";
+  break;
+  case 2:
+    $ret["data"] = "saveStep(2)";
+  break;
+  case 3:
+    $ret["data"] = "saveStep(3)";
+  break;
+  case 4:
+    $ret["data"] = "saveStep(4)";
+  break;
+  default:
+  break;
+}
 
+if(isset($token) && !empty($token)) {
+  switch($token) {
+    case "prev":
+      if($step > 1) {
+        $_SESSION["step"] = $step -= 1;
+      }
+    break;
+    case "next":
+      if($step < $_SESSION["count_steps"]-1) {
+        $_SESSION["step"] = $step += 1;
+      }
+    break;
+    case "done":
+      $_SESSION["bInstalled"] = true;
+      $ret["location"] = "/";
+    break;
+  }
+  // if("prev" === $token && $step > 1) {
+  //   $_SESSION["step"] = $step -= 1;
+  // }
+  // else if("next" === $token && $step < $_SESSION["count_steps"]-1) {
+  //   $_SESSION["step"] = $step += 1;
+  // }
 }
 
 $ret["step"] = $_SESSION["step"];
-$ret["data"] = json_decode($_POST["data"], true);
 $ret["content"] = file_get_contents("./step".$ret["step"]);
 
 echo json_encode($ret, 320);

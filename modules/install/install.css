@@ -39,6 +39,12 @@
   overflow-y: auto;
   word-break: break-word;
 }
+.step-content>div+div {
+  margin-top: 5px;
+}
+.step-content b {
+  color: #F00;
+}
 
 .install-foot {
   text-align: right;

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["bInstalled"]) || !$_SESSION["bInstalled"]) {
+  header("location: /modules/install/");
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-CN" onselectstart="return false;">
 <head>
