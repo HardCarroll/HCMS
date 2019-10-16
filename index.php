@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["bInstalled"]) || !$_SESSION["bInstalled"]) {
+if((!isset($_SESSION["bInstalled"]) || !$_SESSION["bInstalled"]) && !file_exists($_SERVER["DOCUMENT_ROOT"]."/modules/install/.installed.lock")) {
   header("location: /modules/install/");
 }
 ?>
