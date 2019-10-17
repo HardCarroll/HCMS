@@ -48,6 +48,7 @@ if(isset($token) && !empty($token)) {
   }
 }
 
+$ret["token"] = $_POST["token"];
 $ret["step"] = $_SESSION["step"];
 $ret["count_steps"] = $_SESSION["count_steps"];
 $ret["content"] = file_get_contents("./step".$ret["step"]);

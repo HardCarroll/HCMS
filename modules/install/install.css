@@ -29,6 +29,11 @@
   margin-top: 5px;
 }
 .step-list .step-item.done {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  color: #fff;
+}
+.step-list .step-item.active {
   background-color: #ddd;
 }
 .step-content {

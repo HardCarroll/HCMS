@@ -10,8 +10,8 @@ if(isset($_SESSION["step"]) && !empty($_SESSION["step"])) {
 if(isset($_SESSION["count_steps"]) && !empty($_SESSION["count_steps"])) {
   $count_steps = $_SESSION["count_steps"];
 }
-// echo $count_steps;
 ?>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -29,7 +29,7 @@ if(isset($_SESSION["count_steps"]) && !empty($_SESSION["count_steps"])) {
     <div class="install-head"></div>
     <div class="install-body">
       <div class="step-list">
-        <span class="step-item done">第一步</span>
+        <span class="step-item active">第一步</span>
         <span class="step-item">第二步</span>
         <span class="step-item">第三步</span>
         <span class="step-item">第四步</span>
@@ -51,17 +51,23 @@ if(isset($_SESSION["count_steps"]) && !empty($_SESSION["count_steps"])) {
 <script src="/include/bootstrap/js/bootstrap.min.js"></script>
 <script src="./install.js"></script>
 <script>
-  // $(".btn-debug").click(function() {
-  //   $(this).install({step: 2}).debug();
-  // });
+  $(".btn-debug").click(function() {
+    // $(this).next();
+  });
+  
   var step = <?php echo $step; ?>;
-  $(".step-item").eq(<?php echo $step; ?>).prevAll().addClass("done");
+  $(".step-item").eq(step-1).addClass("active").prevAll().removeClass("active").addClass("done");
+
+  $(".btn-prev").off("click").on("click", function() {
+    step = $(this).install({step: step, token: "prev"});
+  });
 
   $(".btn-next").off("click").on("click", function() {
-    // console.log($(this).install({step: step}));
-    var res = $(this).install({step: step});
-    // step = res.step;
-    console.log("index()" + res);
+    step = $(this).install({step: step, token: "next"});
+  });
+
+  $(".btn-done").off("click").on("click", function() {
+    $(this).install({step: step, token: "done"});
   });
 </script>
 
