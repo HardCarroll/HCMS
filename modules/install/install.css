@@ -15,7 +15,7 @@
 .step-list {
   padding: 30px 0;
 }
-.step-list .step-item {
+.step-list .step-list-item {
   display: block;
   padding: 5px;
   text-align: center;
@@ -25,29 +25,35 @@
   user-select: none;
   cursor: default;
 }
-.step-list .step-item+.step-item {
+.step-list .step-list-item+.step-list-item {
   margin-top: 5px;
 }
-.step-list .step-item.done {
+.step-list .step-list-item.done {
   background-color: #5cb85c;
   border-color: #4cae4c;
   color: #fff;
 }
-.step-list .step-item.active {
+.step-list .step-list-item.active {
   background-color: #ddd;
 }
-.step-content {
+.step-table {
   flex: 1;
   border: 1px solid #ccc;
-  padding: 5px;
   overflow-x: hidden;
   overflow-y: auto;
   word-break: break-word;
+  position: relative;
 }
-.step-content>div+div {
-  margin-top: 5px;
+.step-table .step-table-item {
+  position: absolute;
+  width: 100%;
+  padding: 5px;
+  display: none;
 }
-.step-content b {
+.step-table .step-table-item.active {
+  display: block;
+}
+.step-table b {
   color: #F00;
 }
 
