@@ -1,22 +1,56 @@
 $(function() {
   // 上一步点击事件
   $(".btn-prev").off("click").on("click", function() {
-    $(".step-list").find(".active").install({token: "prev"}).removeClass("active").prev().addClass("active").removeClass("done");
-    // $(this).install({token: "prev"});
+    // $(".step-list").find(".active").removeClass("active").prev().addClass("active").removeClass("done").install({token: "prev"});
+    $(this).install({token: "prev"});
   });
 
   // 下一步点击事件
   $(".btn-next").off("click").on("click", function() {
-    // console.log($(".step-list").find(".active").index());
-    // console.log($(".step-list-item").length);
 
-    $(".step-list").find(".active").install({token: "next"}).removeClass("active").addClass("done").next().addClass("active");
-    // $(this).install({token: "next"});
+    // $(".step-list").find(".active").removeClass("active").addClass("done").next().addClass("active").install({token: "next"});
+    $(this).install({token: "next"});
   });
 
   // 完成点击事件
   $(".btn-done").off("click").on("click", function() {
     $(this).install({token: "done"});
+  });
+
+  $(".btn-debug").click(function() {
+    // var nodes = $(".step-table").find(".step-table-item.active").find(".input-group");
+    // for(var i=0; i<nodes.length; i++) {
+    //   console.log(nodes[i]);
+    // }
+
+    $.ajax({
+      url: "./handle.php",
+      type: "post",
+      data: "token=save",
+      dataType: "json",
+      processData: false,
+      success: function(result) {
+        console.log(result);
+      },
+      error: function(error) {
+        console.log("error: " + error);
+      }
+    });
+
+    $.ajax({
+      url: "./handle.php",
+      type: "post",
+      data: "token=load",
+      dataType: "json",
+      processData: false,
+      success: function(result) {
+        console.log(result);
+      },
+      error: function(error) {
+        console.log("error: " + error);
+      }
+    });
+    
   });
 
 });
@@ -32,7 +66,10 @@ $(function() {
       var _that = this;
       var opts = $.extend({}, defaults, options);
 
-      console.log("install() " + this.index());
+      // opts.step = this.index();
+      // console.log("install() " + this.index());
+      // console.log(opts.step = $(".step-list").find(".active").index());
+      // $(".step-table-item").eq(opts.step).addClass("active").siblings().removeClass("active");
 
       switch(opts.token) {
         case "prev":
@@ -46,11 +83,15 @@ $(function() {
           break;
       }
 
+      aysncStatus(opts);
+
+      console.log(opts);
+
       return _that;
     }
   });
 
-  var defaults = {step: 1, prev: 0, next: 2};
+  var defaults = {};
 
   // 私有方法，不能被外部访问
   // 检查参数合法性
@@ -65,15 +106,79 @@ $(function() {
   }
 
   function prev(options) {
-    console.log(options);
+    options.index = $(".step-list").find(".active").removeClass("active").prev().addClass("active").removeClass("done").index();
+    $(".step-table-item").eq(options.index).addClass("active").siblings().removeClass("active");
+    
+    options.backward = options.index+1;
   }
 
   function next(options) {
-    console.log(options);
+    options.index = $(".step-list").find(".active").removeClass("active").addClass("done").next().addClass("active").index();
+    $(".step-table-item").eq(options.index).addClass("active").siblings().removeClass("active");
+    
+    options.backward = options.index-1;
+    // switch(options.backward) {
+    //   case 0:
+    //     break;
+    //   case 1:
+    //     break;
+    //   case 2:
+    //     break;
+    //   case 3:
+    //     break;
+    // }
+
+    // var fmd = new FormData();
+    // fmd.append("token", "next");
+
+    // fmd.append("db_account", $("#inDBAccount").val());
+    // fmd.append("db_password", $("#inDBPassword").val());
+    // fmd.append("db_host", $("#inDBHost").val());
+    // fmd.append("db_name", $("#inDBName").val());
+
+    // saveData(fmd);
+    
   }
 
   function done(options) {
     console.log(options);
+  }
+
+  function saveData(data) {
+    // 
+    $.ajax({
+      url: "./handle.php",
+      type: "post",
+      data: data,
+      contentType: false,
+      dataType: "json",
+      processData: false,
+      aysnc: true,
+      success: function(result) {
+        console.log(result);
+      },
+      error: function(msg) {
+        console.log("error: " + msg);
+      }
+    });
+  }
+  
+  function aysncStatus(options) {
+    if(options.index === 0) {
+      $(".btn-prev").addClass("hidden");
+    }
+    else {
+      $(".btn-prev").removeClass("hidden");
+    }
+
+    if(options.index === 3) {
+      $(".btn-next").addClass("hidden");
+      $(".btn-done").removeClass("hidden");
+    }
+    else {
+      $(".btn-done").addClass("hidden");
+      $(".btn-next").removeClass("hidden");
+    }
   }
 
 })(jQuery)

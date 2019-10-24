@@ -1,8 +1,28 @@
 <?php
 // session_start();
 
-// $token = $_POST["token"];
-// $step = $_POST["step"];
+$token = $_POST["token"];
+// $db_account = $_POST["db_account"];
+// $db_password = $_POST["db_password"];
+// $db_host = $_POST["db_host"];
+// $db_name = $_POST["db_name"];
+
+// $ret[] = array("token" => $token);
+// $ret[] = array("account" => $db_account);
+// $ret[] = array("password" => $db_password);
+// $ret[] = array("host" => $db_host);
+// $ret[] = array("name" => $db_name);
+
+// echo json_encode($ret, 320);
+
+switch($token) {
+  case "save":
+    echo '{"save": "hello world"}';
+    break;
+  case "load":
+    echo '{"load": "hello world"}';
+    break;
+}
 
 // if(!isset($_SESSION["step"]) || empty($_SESSION["step"]) || $_SESSION["step"] !== intval($step)) {
 //   $_SESSION["step"] = 1;

@@ -53,6 +53,9 @@
 .step-table .step-table-item.active {
   display: block;
 }
+.step-table .step-table-item .input-group+.input-group {
+  margin-top: 10px;
+}
 .step-table b {
   color: #F00;
 }

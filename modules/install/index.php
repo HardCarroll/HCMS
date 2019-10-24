@@ -10,6 +10,15 @@ if (isset($_SESSION["step"]) && !empty($_SESSION["step"])) {
 if (isset($_SESSION["count_steps"]) && !empty($_SESSION["count_steps"])) {
   $count_steps = $_SESSION["count_steps"];
 }
+
+$_SESSION["install"]["0"] = array("step"=>1, "data"=>"first step");
+$_SESSION["install"]["1"] = array("step"=>2, "data"=>"second step");
+$_SESSION["install"]["2"] = array("step"=>3, "data"=>"third step");
+$_SESSION["install"]["3"] = array("step"=>4, "data"=>"fouth step");
+
+echo json_encode($_SESSION["install"][2], 320);
+
+// print_r($_SESSION["install"]);
 ?>
 
 <!DOCTYPE html>
@@ -38,38 +47,35 @@ if (isset($_SESSION["count_steps"]) && !empty($_SESSION["count_steps"])) {
         <div class="step-table-item active">
           <div class="input-group">
             <span class="input-group-addon">数据库账号<b>*</b></span>
-            <input id="inDBAccount" type="text" class="form-control" placeholder="请向空间服务商索取">
+            <input id="inDBAccount" type="text" class="form-control" placeholder="请向网络空间服务商索取">
           </div>
           <div class="input-group">
             <span class="input-group-addon">数据库密码<b>*</b></span>
-            <input id="inDBPassword" type="password" class="form-control" placeholder="请向空间服务商索取">
+            <input id="inDBPassword" type="password" class="form-control" placeholder="请向网络空间服务商索取">
           </div>
           <div class="input-group">
             <span class="input-group-addon">数据库地址<b>*</b></span>
-            <input id="inDBHost" type="text" class="form-control" value="localhost" placeholder="请向空间服务商索取">
+            <input id="inDBHost" type="text" class="form-control" value="localhost" placeholder="请向网络空间服务商索取">
           </div>
           <div class="input-group">
             <span class="input-group-addon">数据库名称<b>*</b></span>
             <input id="inDBName" type="text" class="form-control">
           </div>
-          <div class="return-msg">1</div>
+          <div class="return-msg"></div>
         </div>
         <div class="step-table-item">
-          <p>page2: 1</p>
-          <p>page2: 2</p>
-          <p>page2: 3</p>
-          <p>page2: 4</p>
-          <p>page2: 5</p>
-          <p>page2: 6</p>
-          <p>page2: 7</p>
-          <p>page2: 8</p>
-          <p>page2: 9</p>
-          <p>page2: 10</p>
-          <p>page2: 11</p>
-          <p>page2: 12</p>
-          <p>page2: 13</p>
-          <p>page2: 14</p>
-          <p>page2: 15</p>
+          <div class="input-group">
+            <span class="input-group-addon">管理员账号<b>*</b></span>
+            <input id="inAdminAccount" type="text" class="form-control" placeholder="后台超级管理员账号">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">管理员密码<b>*</b></span>
+            <input id="inAdminPassword" type="password" class="form-control" placeholder="后台超级管理员密码">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">管理员密码<b>*</b></span>
+            <input id="inAdminConfirm" type="password" class="form-control" placeholder="确认后台超级管理员密码">
+          </div>
         </div>
         <div class="step-table-item">
           <p>page3: 1</p>
@@ -113,9 +119,9 @@ if (isset($_SESSION["count_steps"]) && !empty($_SESSION["count_steps"])) {
       </div>
     </div>
     <div class="install-foot">
-      <span class="btn btn-primary btn-prev <?php //if ($step === 1) echo "hidden"; ?>">上一步</span>
+      <span class="btn btn-primary btn-prev hidden<?php //if ($step === 1) echo "hidden"; ?>">上一步</span>
       <span class="btn btn-primary btn-next <?php //if ($step === $count_steps) echo "hidden"; ?>">下一步</span>
-      <span class="btn btn-success btn-done <?php //if ($step !== $count_steps) echo "hidden"; ?>">完成</span>
+      <span class="btn btn-success btn-done hidden<?php //if ($step !== $count_steps) echo "hidden"; ?>">完成</span>
       <span class="btn btn-default btn-debug">Debug</span>
     </div>
   </div>
