@@ -24,6 +24,7 @@ switch($token) {
     break;
 }
 
+
 // if(!isset($_SESSION["step"]) || empty($_SESSION["step"]) || $_SESSION["step"] !== intval($step)) {
 //   $_SESSION["step"] = 1;
 // }
