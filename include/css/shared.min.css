@@ -173,6 +173,43 @@ input, textarea, button, select {
 .types .inner .item {
   display: block;
 }
+.contact {
+  padding: 50px 0;
+  background-color: #FFF;
+  background-image: url(/media/image/city.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: fixed;
+}
+.contact .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px 15px;
+}
+.contact .inner .column .logo {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+}
+.contact .inner .column p {
+  line-height: 1.5em;
+}
+.contact .inner .column a {
+  display: block;
+  color: #333;
+  margin-top: 15px;
+}
+.contact .inner .qrcode-cus {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  right: 15px;
+  top: 45px;
+  text-align: center;
+}
+.contact .inner .qrcode-cus img {
+  width: 100%;
+}
 #waterfall {
   margin: 0;
   padding: 5px;

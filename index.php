@@ -221,8 +221,18 @@ $cs_array = json_decode($cs_json, TRUE);
 
     <div class="contact" id="hsd-contact">
       <div class="inner container-fluid row">
-        <div class="column col-xs-12 col-sm-6 col-sm-offset-3">
-          <p>HEARTHSTONE</p>
+        <div class="column col-xs-12 col-sm-6">
+          <h2 class="logo">HEARTHSTONE</h2>
+          <p class="addr">地址：湖南省长沙市长沙县开元中路星大花园1408室</p>
+          <p class="moblie">Mob：15388933393</p>
+          <p class="qq">QQ：476000121</p>
+          <p class="email">E-mail：476000121@qq.com</p>
+          <a href="http://www.hs1design.com" class="website">炉石空间设计（www.hs1design.com）</a>
+          <p>Copyright © 2020 HEARTHSTONE DESIGN ALL Rights Reserved.</p>
+          <p>本网站中所展示的作品著作权均属于炉石空间设计所有。</p>
+          <p>酒店、餐厅、办公空间、民俗、展厅</p>
+          <a href="http://www.beian.miit.gov.cn" target="_blank" class="icp"><img src="/media/image/icp.jpg">湘ICP备88888888号-1</a>
+          <div class="qrcode-cus"><img src="/media/image/qrcode_cus.jpg" alt=""><span>客服微信号</span></div>
         </div>
       </div>
     </div>
